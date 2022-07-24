@@ -1,0 +1,29 @@
+<?php
+
+namespace App\Models;
+
+use App\Models\Role;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
+/**
+ * App\Models\Permission
+ *
+ * @property int $id
+ * @property string $name
+ * @method static \Illuminate\Database\Eloquent\Builder|Permission newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Permission newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Permission query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Permission whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Permission whereName($value)
+ * @mixin \Eloquent
+ */
+class Permission extends Model
+{
+    use HasFactory;
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'permissions');
+    }
+}
